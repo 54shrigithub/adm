@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register | AdmissionZone</title>
+    
+    <link rel = "icon" href ="{% static 'logo2.jpg' %}" type = "image/x-icon">
+	<style>
+        body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    }
+    .man{
+        width: 350px;
+        height: 500px;
+        background: rgba(23, 151, 140, 0.878);
+        overflow: hidden;      
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+    }
+    #chk{
+        display: none;
+    }
+    .user{
+        position: relative;
+        width:100%;
+        height: 100%;
+    }
+    label{
+        color: #fff;
+        font-size: 2.3em;
+        justify-content: center;
+        display: flex;
+        margin: 60px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+    }
+    input{
+        width: 60%;
+        height: 20px;
+        background: #e0dede;
+        justify-content: center;
+        display: flex;
+        margin: 20px auto;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .button{
+        width: 60%;
+        height: 40px;
+        margin: 10px auto;
+        justify-content: center;
+        display: block;
+        color: #fff;
+        background: #573b8a;
+        font-size: 1em;
+        font-weight: bold;
+        margin-top: 20px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        transition: .2s ease-in;
+        cursor: pointer;
+    }
+    .button:hover{
+        background: #6d44b8;
+    }
+    .college{
+        height: 460px;
+        background: #eee;
+        border-radius: 60% / 10%;
+        transform: translateY(-180px);
+        transition: .8s ease-in-out;
+    }
+    .college label{
+        color: #573b8a;
+        transform: scale(.6);
+    }
+    
+    #chk:checked ~ .college{
+        transform: translateY(-525px);
+    }
+    #chk:checked ~ .college label{
+        transform: scale(1);	
+    }
+    #chk:checked ~ .user label{
+        transform: scale(.6);
+    }
+
+/*headder design*/
+a {
+text-decoration: none;
+}
+li {
+list-style: none;
+}
+ 
+.navbar {
+    display: flex;    
+    align-items: center;    
+    justify-content: space-between;    
+    padding: 20px;   
+    background-color: rgb(0, 66, 189);   
+    color: #fff;
+    background-size: cover;
+    position: absolute;  
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+.nav-links a {   
+    color: #fff;
+}   
+    /* LOGO */   
+.logo {   
+    font-size: 32px;    
+    }
+    
+    /* NAVBAR MENU */    
+.menu {    
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+    
+.menu li:hover {
+    background-color: #179df0;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+    
+.heading1{
+    text-align: center;
+    background-size: cover;
+    background-image: url({% static 'c.jpg' %});
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:70px;
+}
+
+.heading{
+    text-align: center;
+    background-size: 100%;
+    background-image: url({% static 'c.jpg' %});
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+    </style>
+    {% if messagess %}
+        <script>
+        alert("Already Registerd....!");
+        </script>
+    {% endif %}
+    {% if umessagess %}
+        <script>
+        alert("Username alredy exist..! Try another Username");
+        </script>
+    {% endif %}
+    {% if emessagess %}
+        <script>
+        alert("Password does'nt match....!");
+        </script>
+    {% endif %}
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" style="height:10px">
+    
+            <!-- LOGO -->        
+            <div class="logo">&nbsp&nbsp<img src="{% static 'logo2.jpg' %}" height="34px" width="48px"></div>
+            
+            <!-- NAVIGATION MENU -->
+            <ul class="nav-links">
+            
+            <!-- NAVIGATION MENUS -->       
+            <div class="menu" >
+                <li><a href="/home">Home</a></li>       
+                <li><a href="/login">Login</a></li>       
+                <li><a href="/reg">Register</a></li>    
+                <li><a href="/aboutus">AboutUs</a></li>        
+                <li><a href="/notification">Notifications</a></li>       
+            </div>        
+            </ul>        
+        </nav>
+    </header>
+
+    {% if messages %} {% for message in messages %}
+      <div
+        {%
+        if
+        message.tags
+        %}
+        class="alert alert-{{ message.tags }} alert-dismissible fade show"
+        role="alert"
+        {%
+        endif
+        %}
+      >
+        <strong>{{ message }}</strong>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %} {% endif %}
+
+
+	<div class="man">  
+        	
+		<input type="checkbox" id="chk" aria-hidden="true">
+       
+			<div class="user">
+				<form method='POST' action='{% url 'student_register' %}'>
+                    {% csrf_token %}
+					<label style = "position:relative;top:-20px;" for="chk" aria-hidden="true" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Student</label>
+					<input style = "position:relative;top:-40px;" type="text" name="sname" placeholder="Student Name" required pattern="^[a-zA-Z]+[a-zA-Z0-9_]*$" title="Username should start with a letter and can contain letters and numbers.">
+					<input style = "position:relative;top:-40px;" type="email" name="semail" placeholder="Email" required >
+					<input style = "position:relative;top:-40px;" type="password" name="spswd" placeholder="Create Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$" title="Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character." >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                    <input style = "position:relative;top:-40px;" type="password" name="scpswd" placeholder="Confirm Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$" title="Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character." ><br>
+                    <p style = "position:relative;top:-80px;left:60px;">On Signup You agree to<a href="/terms">T & C</a> </p>
+                    <input type="submit" style = "position:relative;top:-90px;" name='type' class="button" value="Register">
+				</form>
+			</div>
+			<div class="college">
+				<form  method='POST' action='{% url 'college_register' %}'>
+                    {% csrf_token %}
+					<label for="chk" aria-hidden="true" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">College</label>
+                    <input style = "position:relative;top:-45px;" type="text" name="caname" placeholder="College Name" required pattern="^[a-zA-Z]+$">
+					<input style = "position:relative;top:-45px;" type="email" name="caemail" placeholder="Email" required>
+					<input style = "position:relative;top:-45px;" type="password" name="capswd" placeholder="Password" required id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$" title="Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character." >
+                    <input style = "position:relative;top:-45px;" type="password" name="cacpswd" placeholder="Confirm Password" required id="confirm_pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$" title="Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character." ><br>
+                    <p style = "position:relative;top:-80px;left:60px;">On Signup You agree to<a href="terms.html">T & C</a> </p>
+                    <input type="submit" style = "position:relative;top:-90px;" name='type' class="button" value="Register">
+				</form>
+			</div>
+    </div>
+    
+</body>
+</html>
+
+{% comment %} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$" title="Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character." {% endcomment %}

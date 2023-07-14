@@ -1,0 +1,243 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login | AdmissionZone</title>
+     <link rel = "icon" href ="{% static 'logo2.jpg' %}" type = "image/x-icon">
+<style media="screen">
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    
+    background-color: #000000;
+    background-image: url({% static 'c8.jpg' %});
+    background-size:cover;
+    background-repeat: no-repeat;
+     
+}
+
+
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+form{
+    height: 510px;
+    width: 400px;
+    background-color: rgba(0, 159, 212, 0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    
+}
+form{
+    font-family: 'Poppins',sans-serif;
+    color: #e8da44;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align:center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 800;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(174, 3, 3, 0.07);
+    border-radius: 0px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #fffeff;
+}
+.button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #36b2eb;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+.other{
+  margin-top: 40px;
+  display: flex;
+}
+
+/*headder design*/
+a {
+text-decoration: none;
+}
+li {
+list-style: none;
+}
+ 
+.navbar {
+    display: flex;    
+    align-items: center;    
+    justify-content: space-between;    
+    padding: 20px;   
+    background-color: rgb(0, 66, 189);   
+    color: #fff;
+    background-size: cover;
+    position: absolute;  
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+.nav-links a {   
+    color: #fff;
+}   
+    /* LOGO */   
+.logo {   
+    font-size: 32px;    
+    }
+    
+    /* NAVBAR MENU */    
+.menu {    
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+    
+.menu li:hover {
+    background-color: #179df0;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+    
+.heading1{
+    text-align: center;
+    background-size: cover;
+    background-image: url({% static 'c.jpg' %});
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:70px;
+}
+
+.heading{
+    text-align: center;
+    background-size: 100%;
+    background-image: url({% static 'c.jpg' %});
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" style="height:50px">
+    
+            <!-- LOGO -->        
+            <div class="logo">&nbsp&nbsp<img src="{% static 'logo2.jpg' %}" height="34px" width="48px"></div>
+            
+            <!-- NAVIGATION MENU -->
+            <ul class="nav-links">
+            
+            <!-- NAVIGATION MENUS -->       
+            <div class="menu" >
+                <li><a href="/home">Home</a></li>       
+                <li><a href="/login">Login</a></li>       
+                <li><a href="/reg">Register</a></li>    
+                <li><a href="/aboutus">AboutUs</a></li>        
+                <li><a href="/notification">Notifications</a></li>        
+            </div>        
+            </ul>        
+        </nav>
+        
+        
+    </header>
+    
+    <form action="" method="post">
+        <h3 style="color:rgb(73, 243, 6);font-family: Verdana, Geneva, Tahoma, sans-serif;"><b>Login</b></h3>
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input  placeholder="Username" id="username" required style="color: #ffffff;" name="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" required style="color: #ffffff;" name="pass">
+        <a href="{% url 'forgot_password.html' %}" style="color: #080385;">Forgot password?</a> 
+        {% for message in messages %}
+        
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>{{message}}</strong>
+          </div>
+          {% endfor %} 
+        <input type="submit" class="button" href="/dashboard"></input>
+        
+        <a href="/reg" style="color: #230261;">Don't have an account? Register here.</a>
+        
+        
+    </form>
+    
+</body>
+</html>

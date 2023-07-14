@@ -1,0 +1,210 @@
+{% extends 'student_dashboard.html' %}
+{% load static %}
+
+	 {% comment %} <script>
+		function sel(){
+			document.getElementById('lbl').innerHTML=("Fee for the selected college and course : "+formid.selcour[formid.selcour.selectedIndex].value)
+		}
+	</script>  {% endcomment %}
+
+{% block script %}
+
+{% endblock script %}
+
+{% block style %}
+
+body{
+	font-family: Calibri, Helvetica, sans-serif;
+	background-color:lightblue;
+  }
+  .container {
+	padding: 50px;
+	background-color: lightpink;
+  }
+  
+  input[type=text], input[type=password], textarea {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+  }
+  input[type=text]:focus, input[type=password]:focus {
+	background-color: orange;
+	outline: none;
+  }
+   div {
+			  padding: 10px 0;
+		   }
+  hr {
+	border: 1px solid #f1f1f1;
+	margin-bottom: 25px;
+  }
+  .registerbtn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+  }
+  .registerbtn:hover {
+	opacity: 1;
+  }
+
+{% endblock style %}
+
+{% block body %}
+				<div class="report-header">
+					<h1 class="recent-Articles">Application Form</h1>
+				</div>
+				
+				<form id="formid" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+                    <div class="container">
+                    <center>  <h1> Student Application Form</h1> </center>
+                    <hr>
+					<p><b>Note:</b> In case of any mistakes or invalid details, then your application will rejected.<br>So please enter correct details with valid information.</p>
+					<br><br>
+					<label> First Name: </label>
+                  <input type="text" name="firstname" placeholder= "Firstname" size="15" required pattern="^[a-zA-Z]+$" /> 
+                  <label> Last Name: </label> 
+                  <input type="text" name="lastname" placeholder="Lastname" size="15" required pattern="^[a-zA-Z]+$" />
+				  <label> Father's name: </label>  
+                  <input type="text" name="fathername" placeholder="Fathername" size="15" required pattern="^[a-zA-Z]+$" />  
+				  <label> Mother's name: </label>  
+                  <input type="text" name="mothername" placeholder="Mothername" size="15" required pattern="^[a-zA-Z]+$" /> 
+				  <label> Date of birth:</label>&nbsp;&nbsp;
+				  <input type="date" name="dateofbirth" placeholder="dateofbirth" style="width:250px;height:30px" required min="" max="" id="dob" />                 
+                  <div>
+                  <label> 
+                  Gender :
+                  </label><br>
+                  <input type="radio" value="Male" name="gender" checked > Male 
+                  <input type="radio" value="Female" name="gender"> Female 
+                  <input type="radio" value="Other" name="gender"> Other                 
+                  </div>
+                  <label> 
+                  Phone :
+                  </label>
+                  <input type="text" name="phone" placeholder="Phone number"  pattern="^\d{10}$" required/> 
+				  <label> 
+					Alternate Phone :
+					</label>
+                  <input type="text" name="alt" placeholder="Alternate phone" size="20" pattern="^\d{10}$" required/> 
+                  Current Address :
+                  <textarea name="address" placeholder="Current Address" required></textarea>
+				  <br><br>
+				  <label> 
+					<b>Previous Education Details:</b><br><br>
+					</label>
+					<label> 
+					SSLC Percentage:
+					</label>
+					<input type="text" name="sslcpercent" pattern="[0-9]+(\.[0-9]+)?" placeholder="SSLC Percentage"  value="" size="100"  min="50"max="100" required/> 
+					<label> <br>
+					SSLC School:	
+					</label>
+					<input type="text" name="sslcschool" placeholder="SSLC School"  value="" size="50" required pattern="^[a-zA-Z]+$" /> 					
+						<label> 
+						PU Percentage:
+						</label>
+						<input type="text" name="pupercent" placeholder="PU Percentage" pattern="[0-9]+(\.[0-9]+)?" value="" size="100"  min="50" max="100" required/> 
+						<label> <br>
+						PU College:	
+						</label>
+						<input type="text" name="pucollege" placeholder="SSLC School"  value="" size="50" required pattern="^[a-zA-Z]+$" /> 					
+						<div>
+							<label> 
+							Select college:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</label> 							
+							<select name="selcol" id="id_selcol" style="width:300px;height:30px" required/>
+								<option>Select College</option>
+								{% for c in clg %}
+								<option value="{{c}}">{{c}}</option>
+								{% endfor %}
+							</select>
+							{% comment %} <option value="Colleges">College</option>
+							<option value="National Institute of technology, Mangaluru.">National Institute of Technology, Mangaluru.</option>
+							<option value="Jawaharlal Nehru University, Bengaluru.">Jawaharlal Nehru University, Bengaluru.</option>
+							<option value="St Aloysious College, Mangaluru.">St Aloysious College, Mangaluru.</option>
+							<option value="Presidency College, Udupi.">Presidency College, Udupi.</option>
+							<option value="Siddaganga Institute of Technology,Tumkur.">Siddaganga Institute of Technology,Tumkur.</option> {% endcomment %}
+							
+							</div>
+				  		<div>
+					<label> 
+					Course :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</label> 
+					<select style="width:150px;height:30px" name="selcour" id="id_selcour" required/>
+						<option value="">Select Course</option>
+					</select>
+					
+					{% comment %} <select style="width:150px;height:30px" name="selcour" onchange="sel()">
+					<option value="Course">Course</option>
+					<option value="(BCA)1,25,000/-">BCA</option>
+					<option value="(BBA)70,000/-">BBA</option>
+					<option value="(B.Tech)5,00,000/-">B.Tech</option>
+					<option value="(MBA)2,84,000/-">MBA</option>
+					<option value="(MCA)3,50,000/-">MCA</option>
+					<option value="(M.Tech)7,20,000/-">M.Tech</option>
+					</select> {% endcomment %}
+					{% comment %} <select id="id_selcour" style="width:150px;height:30px" name="selcour">
+						<option value="Course">Course</option>
+					</select> {% endcomment %}
+					<br><br>
+					<label id="lbl"></label>					
+					</div>
+					<hr> 
+						Applicant's photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="id_photo">Photo:</label>
+    					<input type="file" name="photo" id="id_photo" required/>
+					<br><!--<input type="submit" value="apply">-->
+					<!--<button type="submit" class="btn btn-primary" {% if has_applied %}disabled{% endif %}>Apply</button>-->
+					{% comment %} {% if has_applied %}
+						<button type="submit" class="btn btn-primary" disabled>Apply</button>
+						<p style="color:red"><b>You have already applied.</b></p>
+				  	{% else %} {% endcomment %}
+						<button type="submit" class="btn btn-primary">Apply</button>
+				  	{% comment %} {% endif %} {% endcomment %}
+				</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Handle the change event of the college select input
+        $('#id_selcol').change(function() {
+            var selectedCollege = $(this).val();
+
+            // Send an AJAX request to retrieve the available courses
+            $.ajax({
+                url: '/get_available_courses/',
+                data: {
+                    'selcol': selectedCollege
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // Clear the existing course options
+                    $('#id_selcour').empty();
+
+                    // Populate the course options with the retrieved data
+                    for (var i = 0; i < data.length; i++) {
+                        var option = $('<option>').text(data[i]).val(data[i]);
+                        $('#id_selcour').append(option);
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+	var today = new Date();
+	var minDate = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate()).toISOString().split("T")[0];
+	var maxDate = new Date(today.getFullYear() - 15, today.getMonth(), today.getDate()).toISOString().split("T")[0];
+  
+	document.getElementById("dob").min = minDate;
+	document.getElementById("dob").max = maxDate;
+</script> 
+{% endblock body %}

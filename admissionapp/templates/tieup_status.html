@@ -1,0 +1,27 @@
+{% extends 'college_dashboard.html' %}
+{% block style %}
+
+{% endblock style %}
+
+{% block body %}
+<div class="report-header">
+    <h1 class="recent-Articles">Tieup Status</h1>
+</div>
+
+{% if request.user.status == '' %}
+Not yet Applied
+{% endif %}
+
+{% if request.user.status == 'notapplied' %}
+Pending..!
+{% endif %}
+
+{% if request.user.status == 'reject' %}
+Application rejected
+{% endif %}
+
+{% if request.user.status == 'accept' %}
+Application was accepted by the Admin
+{% endif %}
+
+{% endblock body %}

@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | AdmissionZone</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel = "icon" href ="{% static 'logo2.jpg' %}" type = "image/x-icon">
+    
+    <style>
+      .mySlides{
+          display:contents;
+          height: 500px;
+          width:100%;
+                      }
+::selection{
+  color: #fff;
+  background: #664AFF;
+}
+
+.wrapper{
+  max-width: 450px;
+  margin: 150px auto;
+}
+
+.wrapper .search-input{
+  background: #fff;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+}
+
+.search-input input{
+  height: 40px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+
+.search-input.active input{
+  border-radius: 5px 5px 0 0;
+}
+
+.search-input .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.search-input.active .autocom-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+
+.search-input.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: #efefef;
+}
+
+.search-input .icon{
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  height: 55px;
+  width: 55px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  color: rgb(0, 66, 189);
+  cursor: pointer;
+}
+
+
+/* CSS for the reviews section */
+   
+.reviews-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.review {
+  margin-bottom: 20px;
+}
+
+.review-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.username {
+  font-weight: bold;
+  margin-left: 20px;
+  font-size:20px;
+}
+
+.time {
+  font-size: 12px;
+  color: black;
+  margin-left: 20px;
+}
+
+.rating {
+  color: blue;
+  margin-left: 20px;
+}
+
+.star::before {
+  content: '\2605';
+}
+
+.feedback {
+  margin-left: 20px;
+  font-size:15px;
+}
+
+.no-reviews {
+  color: #999;
+}
+
+    </style>
+    
+
+</head>
+<body>
+    <header>
+    <nav class="navbar" style="height:50px">
+
+        <!-- LOGO -->        
+        <div class="logo">&nbsp&nbsp<img src="{% static 'logo2.jpg' %}" height="34px" width="48px"></div>
+        
+        <!-- NAVIGATION MENU -->
+        <div class="wrapper">
+      {% comment %} <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        <input type="text" placeholder="Search College..">
+        <div class="autocom-box">
+          <!-- here list are inserted from javascript -->
+        </div>
+        <div class="icon"><i class="fas fa-search"></i></div>
+      </div> {% endcomment %}
+    </div>        
+        <ul class="nav-links">
+        
+        <!-- NAVIGATION MENUS -->       
+        <div class="menu" >
+            <li><a href="/home">Home</a></li>       
+            <li><a href="/login">Login</a></li>       
+            <li><a href="reg">Register</a></li>    
+            <li><a href="/aboutus">AboutUs</a></li>        
+             <li><a href="/notification">{% comment %}&#x1F514;{% endcomment %}Notifications</a></li>         
+        </div>        
+        </ul>        
+    </nav>
+        <h1 class="heading"><font style="font-size: 100px;">ADMISSION</font><br><font style="font-size: 190px;">ZONE</font></h1>
+    </header>
+    <main style="text-align: center;">
+        <div class="abt" id="about">
+            <div class="jumpstron">
+                <div class="container" style="Height:300px">
+                    <br><h3>MAKE ADMISSION ON YOUR DREAM COLLEGE.</h3><br>
+                    <center><hr></center><br>
+                    <p style="color:white;font-size: larger;">No need to travel for making admission.<br> Get started with the admission on top colleges.<br> We make your admission process easier and simple.
+                    </p><br>
+                    <button class="btn1" style="cursor:pointer;"><a href="/reg" style="color:#e67e22">Get Started</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="log" id="log">
+            <div class="right">
+                <div class="container2" style="Height:300px">
+                    <br><h3>Already Have an account?</h3><br>
+                    <center><hr></center><br>
+                    <p style="color:white;font-size: larger;">Continue by loging in.<br> Get started with the admission on top colleges.<br> We make your admission process easier and simple.
+                    </p><br>
+                    <button class="btn2" style="cursor:pointer;"><a href="/login" style="color:rgb(0, 66, 189);">Log In</a></button>
+                </div>
+            </div>
+        </div>
+        <!-- slider -->
+        <h2 style="font-size: 50px;font-family: 'Times New Roman', Times, serif;"><br>TOP GRADUATION COLLEGES.</h2>
+        <div class="slider">
+            <img class="mySlides" src="{% static 'c1.jpg' %}">
+            <img class="mySlides" src="{% static 'c2.jpg' %}">
+            <img class="mySlides" src="{% static 'c3.jpg' %}">
+            <img class="mySlides" src="{% static 'c4.jpg' %}">
+
+            <button class="display-left" style="height:50px;width:50px;background-color: white;position:absolute;top:1400px;left:3px;color: black;" onclick="plusDivs(-1)">&#10094;</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="display-right" style="height:50px;width:50px;position:absolute;top:1400px;left:1295px;background-color: white;color: black" onclick="plusDivs(+1)">&#10095;</button>
+        </div>
+        <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+            
+            function plusDivs(n)
+            {
+                showDivs(slideIndex += n);
+            }
+            function showDivs(n) 
+            {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                if (n > x.length)
+                {
+                    slideIndex = 1;
+                }
+                if (n < 1) 
+                {
+                    slideIndex = x.length
+                }
+                for (i = 0; i < x.length; i++)
+                {
+                    x[i].style.display = "none";  
+                }
+                x[slideIndex-1].style.display = "block";  
+            }
+        </script>
+        <br>
+        <br>
+        <center><div style="background-color:rgb(0, 7, 60);width:70%;">
+            <h1 style="color:yellow;font-size: 100px;position: absolute; left:480px;top:1659px">&#8221;</h1>
+            <p style="color:yellow;text-align: center;"><br><br><br>EDUCATION is the most powerful weapon<br>which you can use to change the world.<br>
+            <br><b>- Prof. Goutham K Paduvary</b><br></p><br><br>
+        </div><br><br>
+        
+    </main>
+    <footer style="background-color: rgb(153, 164, 198);">
+    <div style="background-color: orange">
+        
+      <center><h2 class="rev">Ratings & Reviews:</h2></center>
+      <ul class="reviews-list">
+        {% for review in reviews %}
+        <li class="review">
+          <div class="review-info">
+            <p class="username">{{ review.username }}</p>
+          </div>
+            <div class="rating">
+              {% for ratings in review.rating %}
+                {% if ratings == '1' %}
+                <span class="star"></span>
+                {% elif ratings == '2' %}
+                <span class="star"></span>
+                <span class="star"></span>
+                {% elif ratings == '3' %}
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                {% elif ratings == '4' %}
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                {% elif ratings == '5' %}
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <p class="time">{{ review.timestamp }}</p>
+          <p class="feedback">{{ review.feedback }}</p>
+        </li><hr style="width:auto">
+        {% empty %}
+        <li class="no-reviews">No reviews found.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <br><br><center><img src="{% static 'logo2.jpg' %}" height="100px" width="100px"></center>
+      <p style="color:white;text-align: center;">Admission Zone is the best platform to make admission online.<br>
+      We make admission very easily.<br>
+      Join Admission Zone now!</p><br>
+
+  </div>
+    <div style="background-color: rgb(89, 89, 89)" >
+        <p style="text-align: center;"><b>&#169;Copyrights under Admission Zone 2023</b></p>
+    </div>
+    </footer>
+        
+</body>
+</html>

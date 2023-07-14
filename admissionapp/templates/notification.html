@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | AdmissionZone</title>
+    <link rel = "icon" href ="{% static 'logo2.jpg' %}" type = "image/x-icon">
+    <style>
+        body {
+        background-image: url({% static 'notification.jpg' %});
+        background-size: 100%;
+}
+
+#screen {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  height: 400px;
+  width: 600px;
+  background-color: cyan;
+  ;
+}
+
+#menubar {
+  height: 10%;
+  width: 100%;
+  background-color: #2A373A;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.mac-btn {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-top: 15.5px;
+}
+
+#mac-btn-one {
+  background-color: #FC6767;
+  margin-left: 15.5px;
+}
+
+#mac-btn-two {
+  background-color: #FDD973;
+  margin-left: 31px;
+}
+
+#mac-btn-three {
+  background-color: #B3E07A;
+  margin-left: 47px;
+}
+
+#credit {
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #ffffff;
+  margin-top: 70px;
+  left: 20px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: #4d0355;
+}
+
+a:focus,
+a:hover {
+  color: #ab0000;
+}
+
+
+/*headder design*/
+a {
+text-decoration: none;
+}
+li {
+list-style: none;
+}
+ 
+.navbar {
+    display: flex;    
+    align-items: center;    
+    justify-content: space-between;    
+    padding: 20px;   
+    background-color: rgb(0, 66, 189);   
+    color: #fff;
+    background-size: cover;
+    position: absolute;  
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+.nav-links a {   
+    color: #fff;
+}   
+    /* LOGO */   
+.logo {   
+    font-size: 32px;    
+    }
+    
+    /* NAVBAR MENU */    
+.menu {    
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+    
+.menu li:hover {
+    background-color: #179df0;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+    
+.heading1{
+    text-align: center;
+    background-size: cover;
+    background-image: url({% static 'c.jpg' %});
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:70px;
+}
+
+.heading{
+    text-align: center;
+    background-size: 100%;
+    background-image: url(c.jpg);
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+    </style>
+</head>
+<body><br>
+  <header>
+    <nav class="navbar" style="height:10px">
+
+        <!-- LOGO -->        
+        <div class="logo">&nbsp&nbsp<img src="{% static 'logo2.jpg' %}" height="34px" width="48px"></div>
+        
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+        
+        <!-- NAVIGATION MENUS -->       
+        <div class="menu" >
+          <li><a href="/home">Home</a></li>       
+          <li><a href="/login">Login</a></li>       
+          <li><a href="/reg">Register</a></li>    
+          <li><a href="/aboutus">AboutUs</a></li>        
+          <li><a href="/notification">Notifications</a></li>          
+        </div>        
+        </ul>        
+    </nav>
+</header><br>
+<br>
+<br>
+<br>
+    <div id="screen">
+        <div id="menubar">
+          <div class="mac-btn" id="mac-btn-one"></div>
+          <div class="mac-btn" id="mac-btn-two"></div>
+          <div class="mac-btn" id="mac-btn-three"></div>
+          
+        </div>
+        <div>
+            <h2 style="text-align: center;color: #fc0303;">NOTIFICATIONS</h2>
+            <div class="module">
+              {% if notifications %}
+                  <ul>
+                      {% for notification in notifications %}
+                      <a href="/login" style="color:rgb(7, 0, 143)"><li>{{ notification.message }}{{ notification.timestamp }}</li></a>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <p>No Any notifications.</p>
+              {% endif %}
+            </div>
+        </div>
+        
+          
+        
+        
+        
+        
+      </div>
+      
+      {% comment %} <div id="credit">
+          notification<br>
+          by <a href="home.html" target="_blank">Admission Zone</a>
+        </div>
+      </div> {% endcomment %}
+</body>
+</html>

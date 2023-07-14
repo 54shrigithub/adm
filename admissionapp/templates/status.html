@@ -1,0 +1,43 @@
+{% extends 'student_dashboard.html' %}
+{% block style %}
+
+{% endblock style %}
+
+{% block body %}
+        <div class="report-header">
+            <h1 class="recent-Articles">Application Status</h1>
+        </div>
+            <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>
+                
+                {% if status %}
+                <table>
+                    <tr>
+                        <th>College</th>
+                        <th>Status</th>
+                    </tr>
+                    
+                    {% for s in status %}
+                    <tr>
+                        <td>{{s.applied_to.username}}</td>
+                        {% if s.status == 0 and s.rej == 0  %}<td>Pending..! Please Wait</td>{% endif %}
+                        {% if s.status == 0 and s.rej == 1  %}<td>Rejected..! Better luck next time</td>{% endif %}
+                        {% if s.status == 1 and s.rej == 0  %}<td>Accepted...! For further process we will contact soon.</td>{% endif %}
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    Not Applied to any College
+                    {% endif %}
+
+                </table>
+                
+                
+            </body>
+        </html>
+{% endblock body %}

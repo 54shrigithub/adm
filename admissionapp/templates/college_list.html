@@ -1,0 +1,81 @@
+{% extends 'admin_dashboard.html' %}
+{% block style %}
+#colleges {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #colleges td, #colleges th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #colleges tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #colleges tr:hover {background-color: #ddd;}
+  
+  #colleges th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+{% endblock style %}
+
+{% block body %}
+<div class="report-header">
+    <h1 class="recent-Articles">List of Colleges</h1>
+</div>
+
+                 {% for key, value_list in data.items %}
+				<br>
+				<h1>{{ key }}</h1><br>
+        <div style="overflow-x:auto;">
+                    <table id="colleges">
+                    
+                    <tr>
+                        <th>First Name</th>                      
+                        <th>Last Name</th>
+                        <th>Father Name</th>
+                        <th>Mother Name</th>
+                        <th>Date Of Birth</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>SSLC Percent</th>
+                        <th>SSLC School</th>
+                        <th>PU Percent</th>
+                        <th>PU College</th>
+                        <th>Course</th>
+                        
+                    </tr>
+
+                    {% for value in value_list %}
+                    <tr>
+                        <td>{{value.first_name}}</td>
+                        <td>{{value.last_name}}</td>
+                        <td>{{value.father_name}}</td>
+                        <td>{{value.mother_name}}</td>
+                        <td>{{value.date_of_birth}}</td>
+                        <td>{{value.gender}}</td>
+                        <td>{{value.phone_number}}</td>
+                        <td>{{value.address}}</td>
+                        <td>{{value.sslc_percentage}}</td>
+                        <td>{{value.sslc_school}}</td>
+                        <td>{{value.puc_percentage}}</td>
+                        <td>{{value.puc_college}}</td>
+                        <td>{{value.selected_course}}</td>
+                        
+        </div>  
+                    </tr>
+                    {% endfor %}
+                   
+                    </table>
+                    <br><br><br><br>
+                    {% endfor %}
+
+
+
+{% endblock body %}

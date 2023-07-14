@@ -1,0 +1,216 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AboutUs | AdmissionZone</title>
+    <link rel = "icon" href ="{% static 'logo2.jpg' %}" type = "image/x-icon">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans",sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+}
+
+.about-section{
+    background: url({% static 'about.jpg' %}) no-repeat left;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    height: 100%;
+    padding: 100px 0;
+}
+
+.inner-container{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 150px;
+box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+}
+.inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text{
+    font-size: 13px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+h1{
+  color: #F85370;
+}
+
+.skills{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+}
+span{
+  cursor: pointer;
+  font-size: 16px;
+text-align: center;
+padding: 10px;
+  width: 500px;
+}
+span:hover{
+background-image: linear-gradient(to right top, #f85370, #f35470, #ee5570, #e8556f, #e3566f);
+color: #fff;
+border-radius: 20px;
+transition: 0.5s;
+
+}
+.active{
+  background-image: linear-gradient(to right top, #f85370, #f35470, #ee5570, #e8556f, #e3566f);
+  color: #fff;
+  border-radius: 20px;
+
+
+}
+
+
+
+/*headder design*/
+a {
+text-decoration: none;
+}
+li {
+list-style: none;
+}
+ 
+.navbar {
+    display: flex;    
+    align-items: center;    
+    justify-content: space-between;    
+    padding: 20px;   
+    background-color: rgb(0, 66, 189);   
+    color: #fff;
+    background-size: cover;
+    position: absolute;  
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+.nav-links a {   
+    color: #fff;
+}   
+    /* LOGO */   
+.logo {   
+    font-size: 32px;    
+    }
+    
+    /* NAVBAR MENU */    
+.menu {    
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+    
+.menu li:hover {
+    background-color: #179df0;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+    
+.heading1{
+    text-align: center;
+    background-size: cover;
+    background-image: url(c.jpg);
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:70px;
+}
+
+.heading{
+    text-align: center;
+    background-size: 100%;
+    background-image: url(c.jpg);
+    color:aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" style="height:50px">
+    
+            <!-- LOGO -->        
+            <div class="logo">&nbsp&nbsp<img src="{% static 'logo2.jpg' %}" height="34px" width="48px"></div>
+            
+            <!-- NAVIGATION MENU -->
+            <ul class="nav-links">
+            
+            <!-- NAVIGATION MENUS -->       
+            <div class="menu" >
+                <li><a href="/home">Home</a></li>       
+                <li><a href="/login">Login</a></li>       
+                <li><a href="/reg">Register</a></li>    
+                <li><a href="/aboutus">AboutUs</a></li>        
+                <li><a href="/notification">Notifications</a></li>  
+            </div>        
+            </ul>        
+        </nav>
+    </header>
+    <div class="about-section">
+        <div class="inner-container">
+            <h1>About Us</h1>
+            <p class="text">
+                Admssion Zone Website make your admssion process easier. Need not go to college for Admission.You can make Admission at home easily. We notify you every college that starts admission so that you can make without wasting any time. Make your admssion now!
+            </p>
+            <h3 style="color:#F85370">Created by</h3><br>
+            <div class="creators">
+                <span>Goutham</span>
+                <span>Ranjith</span>
+                <span>Shreyas A</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+{% extends 'college_dashboard.html' %}
+{% block style %}  
+    /*application design*/
+       
+    .container {
+        padding: 50px;
+      background-color: lightblue;
+    }
+    
+    
+     div {
+                padding: 10px 0;
+             }
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+    .registerbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+    .registerbtn:hover {
+      opacity: 1;
+    }
+
+p{
+    font-size: 14px;
+    color: #868d9b;
+}
+
+.card {
+    width: 360px;
+    height: auto;
+    background-color: #ffffff;
+    margin: 0 auto;
+    margin-top: 80px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card_profile_img {
+    width: 120px;
+    height: 120px;
+    background-color: #868d9b;
+    background: url("{{ request.user.photo.url }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #ffffff;
+    border-radius: 120px;
+    margin: 0 auto;
+    margin-top: -60px;
+
+}
+
+.card_background_img {
+    
+    width: 100%;
+    height: 180px;
+    background-color: #e1e7ed;
+    background: url("https://source.unsplash.com/9wg5jCEPBsw");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.user_details p {
+    text-align:center;
+    margin-bottom: 20px;
+    margin-top: -5px;
+}
+
+.user_details h3 {
+    margin-top: 10px;
+    text-align:center;
+}
+
+.card_count {
+    padding: 30px;
+    border-top: 1px solid #dde1e7;
+}
+
+.count {
+    
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.count p {
+    margin-top: -10px;
+}
+
+.btn {
+    padding: 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: #24c5a1;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+{% endblock style %}
+
+{% block body %}
+<div class="report-header">
+    <h1 class="recent-Articles">College Profile</h1>
+</div>
+        <div class="card">
+            <div class="card_background_img"></div>
+            <div class="card_profile_img"></div>
+            <div class="user_details">
+                <h3>{{user.username}} College</h3><br>
+                <p>College User</p>
+            </div>
+            <div class="card_count">
+                <div class="count">
+                    <h4>Phone:</h4><h5 style="color:grey;">{{user.phone}}</h5><br>
+                    <h4>Email:</h4><h5 style="color:grey;">{{user.email}}</h5>
+                </div>
+                <p>Joined on {{user.date_joined}}</p>
+                
+                <div class="btn"><a href={% url 'edit_profile' %}>Edit Profile</a></div>
+            </div>
+        </div>
+{% endblock body %}

@@ -1,0 +1,81 @@
+{% extends 'college_dashboard.html' %}
+{% block style %}
+#colleges {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #colleges td, #colleges th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #colleges tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #colleges tr:hover {background-color: #ddd;}
+  
+  #colleges th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+{% endblock style %}
+{% block body %}
+    <div class="report-header">
+        <h1 class="recent-Articles">Applicants</h1>
+    </div>
+    <div style="overflow-x:auto;">
+         {% if applicant %}
+         <table id="colleges">
+            <tr>
+                <th>First Name</th>                      
+                <th>Father Name</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>SSLC Percent</th>
+                <th>PU Percent</th>
+                <th>Course</th>
+                <th>Photo</th>
+                <th>Date</th>
+                <th colspan='2'>Action</th>
+                
+            </tr>
+                {% for apl in applicant  %}
+                    <tr>
+                        <td>{{ apl.applied_by.username }}</td>
+                        <td>{{ apl.std.father_name }}</td>
+                        <td>{{ apl.std.date_of_birth }}</td>
+                        <td>{{ apl.std.gender }}</td>
+                        <td>{{ apl.std.phone_number }}</td>
+                        <td>{{ apl.std.sslc_percentage }}</td>
+                        <td>{{ apl.std.puc_percentage }}</td>
+                        <td>{{ apl.std.selected_course }}</td>
+                        <td><a href="{{apl.std.photo.url}}">{{ apl.std.photo }}</a></td>  
+                        <td>{{ apl.date }}</td>
+                        
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="accept" value="{{ apl.id }}">
+                            <td><input type="submit" value="accept"></td>
+                        </form>
+                        <form action="" method="POST">
+                            {% csrf_token %}                            
+                            <input type="hidden" name="reject" value="{{ apl.id }}">
+                            <td><input type="submit" value="reject"></td>
+                        </form>
+                        
+                    </tr>
+                {% endfor %}
+                
+         </table>
+         {% endif %}  
+         {% if noapply %}
+            <h1>{{ noapply }}
+         
+         {% endif %}
+    </div>
+{% endblock body %}

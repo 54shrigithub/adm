@@ -1,0 +1,20 @@
+{% extends 'admin_dashboard.html' %}
+{% block style %}
+{% endblock style %}
+
+{% block body %}
+<div class="report-header">
+    <h1 class="recent-Articles">Create Notification</h1>
+</div><br>
+
+
+<div class="module">
+    <form method="post">
+        {% csrf_token %}
+        <center><textarea name="message" rows="4" cols="100" required placeholder="Add your Notifications here..."></textarea><br><br>
+        <button type="submit">Submit</button></centere>
+    </form>
+</div>
+
+
+{% endblock body %}

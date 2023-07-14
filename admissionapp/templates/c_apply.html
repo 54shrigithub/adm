@@ -1,0 +1,115 @@
+{% extends 'college_dashboard.html' %}
+{% load static %}
+
+{% block style %}
+
+/*application design*/
+body{
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: rgb(241, 236, 237);
+}
+.container {
+    padding: 50px;
+  background-color: lightblue;
+}
+
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: orange;
+  outline: none;
+}
+ div {
+            padding: 10px 0;
+         }
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+
+{% endblock style %}	
+
+{% block body %}
+				<div class="report-header">
+					<h1 class="recent-Articles">College Application Form</h1>
+				</div>
+
+
+				<form id="formid" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+                    <div class="container">
+                    <center>  <h1> College Application Form </h1> </center>
+                    <hr>
+					<p><b>Note:</b> In case of any mistakes or invalid details of college, then your application will rejected.<br>So please enter correct details with valid information.</p>
+					<br><br>
+					<label> College Name:</label>
+                  <input type="text" name="colname" placeholder= "Collegename" size="15" required pattern="^[a-zA-Z]+$" /> 
+                  <label> Place: </label>
+                  <input type="text" name="place" placeholder="Place" size="15" required pattern="^[a-zA-Z]+$" /> 
+                  <label> Pincode: </label>
+                  <input type="text" name="pincode" placeholder="Pincode" size="15" pattern="[0-9]{6}" required /> <br><br>
+				  <label> College Strength: </label>
+                  <input type="text" name="strength" placeholder="strength" size="15" required pattern="[0-9]{4}" />  <br> <br> 
+				  <label> Inaugration Date: </label>
+                  <input type="date" name="idate" required min="" max="" id="dob" />   <br><br>
+				  <label> NAAC grade: </label>
+                  <input type="text" name="grade" placeholder="Grade" size="15" pattern="^(A\+\+|A\+|A|B\+\+|B\+|B|C\+\+|C\+|C|D\+\+|D\+|D|E\+\+|E\+|E)$" required />  <br>
+                
+                  <label> 
+                  Principal Phone No. :
+                  </label>
+                  <input type="text" name="phone" placeholder="Phone number"   pattern="[0-9]{10}" required/>  <br>
+				  <label> 
+					<br>
+                  Full Address :
+                  <textarea cols="80" name="address" rows="5" placeholder="College Address" value="address" required/></textarea>
+				  <label> 
+					Cources Available :
+					</label><br>
+          <div required>
+					<input type="checkbox" name="courses_available" value="BCA" required/> BCA <br>
+<input type="checkbox" name="courses_available" value="B.sc"> B.Sc <br>
+<input type="checkbox" name="courses_available" value="B.com"> B.Com <br>
+<input type="checkbox" name="courses_available" value="BBA"> BBA <br>
+<input type="checkbox" name="courses_available" value="MCA"> MCA <br>
+<input type="checkbox" name="courses_available" value="M.Com"> M.Com <br>
+<input type="checkbox" name="courses_available" value="M.sc"> M.Sc <br>
+<input type="checkbox" name="courses_available" value="MBA"> MBA <br>
+				  <br><br>
+          </div>
+						College's photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="id_photo">Photo:</label>
+    					<input type="file" name="photo" id="id_photo" required/> <br>
+					<br><input type="submit" value="Apply">
+					</div>
+					
+
+				</form>
+        <script>
+          var today = new Date();
+          var minDate = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate()).toISOString().split("T")[0];
+          var maxDate = new Date(today.getFullYear() - 5, today.getMonth(), today.getDate()).toISOString().split("T")[0];
+          
+          document.getElementById("dob").min = minDate;
+          document.getElementById("dob").max = maxDate;
+        </script> 
+{% endblock body %}
